@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("ViesInfo")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("ViesInfo")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("mnowacki")]
 [assembly: AssemblyProduct("ViesInfo")]
