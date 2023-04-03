@@ -53,16 +53,16 @@
     <Compile Include="ViesClientTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ViesInfo\ViesInfo.csproj">
-      <Project>{ad0769a5-e34f-48d3-bfe2-a8e35692c020}</Project>
-      <Name>ViesInfo</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ViesInfo\ViesInfo.csproj">
+      <Project>{ad0769a5-e34f-48d3-bfe2-a8e35692c020}</Project>
+      <Name>ViesInfo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

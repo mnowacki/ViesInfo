@@ -1,9 +1,11 @@
-﻿namespace ViesInfo
+﻿using ViesInfo.checkVatService;
+
+namespace ViesInfo
 {
     public class ViesClient
     {
-        private const string ProdUrl = @"http://ec.europa.eu/taxation_customs/vies/services/checkVatService";
-        private const string TestUrl = @"http://ec.europa.eu/taxation_customs/vies/services/checkVatTestService";
+        private const string ProdUrl = @"https://ec.europa.eu/taxation_customs/vies/services/checkVatService";
+        private const string TestUrl = @"https://ec.europa.eu/taxation_customs/vies/services/checkVatTestService";
 
         public ViesClient(bool forTesting = false)
         {
@@ -14,15 +16,13 @@
 
         public ViesCompanyInfo GetCompany(string vatNumber)
         {
-            string requestIdentifier;
-            bool isValid;
-            return GetCompany(vatNumber, null, out isValid, out requestIdentifier);
+            return GetCompany(vatNumber, null, out _, out _);
         }
-        public ViesCompanyInfo GetCompany(string vatNumber, string askingVatNumber, out bool isValid, out string requestIdentifier)
-        {
-            vatNumber = NormalizeVatNumber(vatNumber);
 
-            using (var client = new checkVatService())
+        public ViesCompanyInfo GetCompany(string vatNumber, string askingVatNumber, out bool isValid,
+            out string requestIdentifier)
+        {
+            using (var client = new checkVatPortTypeClient())
             {
                 string countryCode = vatNumber.Substring(0, 2);
                 vatNumber = vatNumber.Substring(2, vatNumber.Length - 2);
@@ -41,21 +41,7 @@
                     requesterVatNumber = askingVatNumber.Substring(2, vatNumber.Length - 2);
                 }
 
-                bool valid;
-                string traderAddress;
-                matchCode traderNameMatch;
-                bool traderNameMatchSpecified;
-                matchCode traderCompanyTypeMatch;
-                bool traderCompanyTypeMatchSpecified;
-                matchCode traderStreetMatch;
-                bool traderStreetMatchSpecified;
-                matchCode traderPostcodeMatch;
-                bool traderPostcodeMatchSpecified;
-                matchCode traderCityMatch;
-                bool traderCityMatchSpecified;
-                //string requestIdentifier;
-
-                var result = client.checkVatApprox(
+                client.checkVatApprox(
                     ref countryCode,
                     ref vatNumber,
                     ref traderName,
@@ -65,18 +51,13 @@
                     ref traderCity,
                     requesterCountryCode,
                     requesterVatNumber,
-                    out valid,
-                    out traderAddress,
-                    out traderNameMatch,
-                    out traderNameMatchSpecified,
-                    out traderCompanyTypeMatch,
-                    out traderCompanyTypeMatchSpecified,
-                    out traderStreetMatch,
-                    out traderStreetMatchSpecified,
-                    out traderPostcodeMatch,
-                    out traderPostcodeMatchSpecified,
-                    out traderCityMatch,
-                    out traderCityMatchSpecified,
+                    out var valid,
+                    out var traderAddress,
+                    out _,
+                    out _,
+                    out _,
+                    out _,
+                    out _,
                     out requestIdentifier);
 
                 isValid = valid;
@@ -89,11 +70,6 @@
                     CountryCode = countryCode
                 };
             }
-        }
-
-        private string NormalizeVatNumber(string vatNumber)
-        {
-            return vatNumber;
         }
     }
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViesInfo.Tests", "test\Vies
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViesInfo", "src\ViesInfo\ViesInfo.csproj", "{AD0769A5-E34F-48D3-BFE2-A8E35692C020}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViesInfo.Tests.7.0", "test\ViesInfo.Tests.7.0\ViesInfo.Tests.7.0.csproj", "{03C3758D-4B05-4371-80D4-51123A3715F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AD0769A5-E34F-48D3-BFE2-A8E35692C020}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0769A5-E34F-48D3-BFE2-A8E35692C020}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD0769A5-E34F-48D3-BFE2-A8E35692C020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C3758D-4B05-4371-80D4-51123A3715F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C3758D-4B05-4371-80D4-51123A3715F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C3758D-4B05-4371-80D4-51123A3715F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C3758D-4B05-4371-80D4-51123A3715F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
